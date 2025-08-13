@@ -1,9 +1,12 @@
 <script lang="ts">
     let newTask = $state("")
+    let { addTask } : { addTask: (newTask : string) => void } = $props();
+
 
     function onsubmit(e: SubmitEvent) {
         e.preventDefault();
-        console.log(newTask);
+        addTask(newTask);
+        newTask = "";
     }
 
 </script>
