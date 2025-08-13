@@ -9,3 +9,9 @@
 <h1> Todo List</h1>
     <Form />
 </main>
+
+<style>
+  h1 {
+	text-align: center;
+  }
+</style>

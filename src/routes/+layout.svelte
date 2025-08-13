@@ -9,3 +9,14 @@
 </svelte:head>
 
 {@render children?.()}
+
+<style lang="scss">
+  @import "../styles/pico.scss";
+
+  :global(body) {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+</style>
+
