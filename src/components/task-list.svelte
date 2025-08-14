@@ -1,18 +1,26 @@
 <script lang="ts">
-	import type { Tasks } from "../types/types";
+	import type { Task } from "../types/types";
+	import RemoveButton from "./remove-button.svelte";
 
-    let { tasks } : {
-        tasks: Tasks[]
+    let { tasks, toggleTask, removeTask } : {
+        tasks: Task[],
+        toggleTask: (task: Task) => void;
+        removeTask: (index: number) => void;
     } = $props();
+
 
 </script>
 
 <section>
     <article>
-        {#each tasks as task}
+        {#each tasks as task, index}
         <label class="task-item">
-            <input type="checkbox">
-                <span>{task.name}</span>
+            <input 
+            checked={task.completed}
+            onchange={()=> toggleTask(task)}
+            type="checkbox">
+                <span class:completed={task.completed}>{task.name}</span>
+                <RemoveButton {removeTask} {index}/>
         </label>
 
         {/each}
@@ -65,5 +73,9 @@
         color: #272222;
         font-weight: 600;
         letter-spacing: 1px;
+    }
+
+    .completed {
+        text-decoration:line-through;
     }
 </style>
