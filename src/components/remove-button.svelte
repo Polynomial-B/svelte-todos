@@ -1,10 +1,10 @@
 <script lang="ts">
-
-    let {index, removeTask} : {index: number, removeTask: (index: number)=> void }= $props();
+	import type { Task } from "../types/types";
+    let {task, removeTask} : {task: Task, removeTask: (id: string)=> void }= $props();
 
 </script>
 
-<button onclick={()=> removeTask(index)}>Remove</button>
+<button onclick={()=> removeTask(task.id)}>Remove</button>
 
 <style>
     button {
@@ -12,7 +12,7 @@
         width: 5rem;
     }
     button:hover {
-        background: rgb(171, 10, 10);
+        background: rgb(142, 0, 0);
         border-radius: inherit;
     }
 </style>
