@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { fade } from "svelte/transition";
 	import type { Task } from "../types/types";
 	import RemoveButton from "./remove-button.svelte";
+ 
 
     let { tasks, toggleTask, removeTask } : {
         tasks: Task[],
@@ -14,7 +16,7 @@
 <section>
     <article>
         {#each tasks as task}
-        <label class="task-item">
+        <label class="task-item" transition:fade>
             <input 
             checked={task.completed}
             onchange={()=> toggleTask(task)}
